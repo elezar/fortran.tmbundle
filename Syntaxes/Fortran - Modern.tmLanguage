@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>comment</key>
@@ -29,15 +29,14 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?x:					# extended mode
-					^
+			<string>(?x:					# extended mode					^
 					\s*					# start of line and possibly some space
 					(?i:(interface))		# 1: word interface
 					\s+					# some space
 					(?i:(operator|assignment))		# 2: the words operator or assignment
 					\(					# opening parenthesis
 					((\.[a-zA-Z0-9_]+\.)|[\+\-\=\/\*]+)	# 3: an operator
-					
+
 					\)					# closing parenthesis
 					)</string>
 			<key>beginCaptures</key>
@@ -91,8 +90,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?x:					# extended mode
-					^
+			<string>(?x:					# extended mode					^
 					\s*					# start of line and possibly some space
 					(?i:(interface))		# 1: word interface
 					\s+					# some space
@@ -202,47 +200,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(^[ \t]+)?(?=!-)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.whitespace.comment.leading.ruby</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(?!\G)</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>!-</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.fortran</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\n</string>
-					<key>name</key>
-					<string>comment.line.exclamation.mark.fortran.modern</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>\\\s*\n</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>(^[ \t]+)?(?=!)</string>
+			<string>(^[\s]+)?(?=!)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -267,14 +225,14 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\n</string>
+					<string>$</string>
 					<key>name</key>
 					<string>comment.line.exclamation.fortran.modern</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
-							<string>\\\s*\n</string>
+							<string>\\\s*?$</string>
 						</dict>
 					</array>
 				</dict>
@@ -284,7 +242,7 @@
 			<key>comment</key>
 			<string>statements controling the flow of the program</string>
 			<key>match</key>
-			<string>\b(?i:(select\s+case|case(\s+default)?|end\s+select|use|(end\s+)?forall))\b</string>
+			<string>\b(?i:(select\s+(case|type)|case(\s+default)?|(class|type)\s+is|class\s+default|end\s+select|use|(end\s+)?forall))\b</string>
 			<key>name</key>
 			<string>keyword.control.fortran.modern</string>
 		</dict>
@@ -340,7 +298,7 @@
 			<key>comment</key>
 			<string>programming units</string>
 			<key>match</key>
-			<string>\b(?i:((end\s*)?(interface|procedure|module)))\b</string>
+			<string>\b(?i:^\s*((end\s*)?(interface|procedure|module)))\b</string>
 			<key>name</key>
 			<string>keyword.other.programming-units.fortran.modern</string>
 		</dict>

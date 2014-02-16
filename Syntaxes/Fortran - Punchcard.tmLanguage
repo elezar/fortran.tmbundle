@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>comment</key>
@@ -49,15 +49,14 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?x:								# extended mode
-					^
-					\s*									# start of line and possibly some space
-					([a-zA-Z\(\)]*)(?&lt;!end)				# 1: possibly some type specification but not the word end
-					\s*									# possibly some space
-					(?i:(function|subroutine))\b		# 2: function or subroutine
-					\s+									# some space
-					([A-Za-z_][A-Za-z0-9_]*)			# 3: name
-					)</string>
+			<string>(?x:                # extended mode         ^
+          \s*                 # start of line and possibly some space
+          ([a-zA-Z\(\)]*)(?&lt;!end)        # 1: possibly some type specification but not the word end
+          \s*                 # possibly some space
+          (?i:(function|subroutine))\b    # 2: function or subroutine
+          \s+                 # some space
+          ([A-Za-z_][A-Za-z0-9_]*)      # 3: name
+          )</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -79,16 +78,16 @@
 			<key>comment</key>
 			<string>First line of function/subroutine definition</string>
 			<key>end</key>
-			<string>(?x:									# extended mode
-					((?i:end))							# 1: the word end
-					(									# followed by
-						$								# end of line
-					|									# or
-						\s*								# possibly some space
-						(?i:(function|subroutine))		# 2: function or subroutine
-						((\s+[A-Za-z_][A-Za-z0-9_]*)?)	# 3: possibly the name
-					)
-					)</string>
+			<string>(?x:                  # extended mode
+          ((?i:end))              # 1: the word end
+          (                 # followed by
+            $               # end of line
+          |                 # or
+            \s*               # possibly some space
+            (?i:(function|subroutine))    # 2: function or subroutine
+            ((\s+[A-Za-z_][A-Za-z0-9_]*)?)  # 3: possibly the name
+          )
+          )</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
